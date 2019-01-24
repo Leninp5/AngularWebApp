@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html data-ng-app="movies">
+    <head>
+        
+        
+
+
+    </head>
+    
+            <div class = "container" data-ng-controller= "MoviesController">
+            
+                    Movie List: <br/>
+                    <input type = "text" data-ng-model ="name"/> {{ name }}
+                    <br/>
+                    <ul>
+                    <li  data-ng-repeat = "mov in moviesList | filter : name | orderBy: 'year'">
+                        {{ mov.name }} - {{ mov.year}}
+                    </li>
+                    </ul>
+                    Movie Name:<br/>
+                    <input type ="text" data-ng-model="newMovie.name" />
+                    <br />
+                    Movie Year:<br/>
+                    <input type = "text" data-ng-model="newMovie.year" />
+                    <br />
+                    <button data-ng-click="addMovie();">Add Movie</button>
+                    <br />
+                    <a href = 'https://www.imdb.com/chart/top?ref_=nv_mv_250'> Let's See the Charts</a>
+        
+                </div>
+        
+   
+</html>

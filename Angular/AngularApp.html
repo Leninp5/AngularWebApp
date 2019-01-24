@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html data-ng-app="movies">
+    <head>
+        <title>
+            Favorite Movies
+        </title>
+        <meta charset="utf-8" />
+    </head>
+    <body class ="bod">
+           <div>
+               <ng-view></ng-view>
+            
+            </div>
+       
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+
+        <script type="text/javascript">
+        
+        var movies = angular.module('movies',['ngRoute']);
+
+              movies.controller('MoviesController', function ($scope){
+                $scope.moviesList = [
+                {name: 'Good Will Hunting', year: '1997'},
+                {name: 'A Beautiful Mind', year: '2001'},
+                {name: 'The Prestige', year: '2006'},
+                {name: 'Memento', year:'2000'}
+                ];
+
+                  $scope.addMovie = function(){
+                     $scope.moviesList.push(
+                    {name: $scope.newMovie.name, year: $scope.newMovie.year}
+                    )
+                }
+              });
+    
+        movies.config(function ($routeProvider){
+                 $routeProvider
+                .when('/Page1.html',
+                    {
+                        controller:'MoviesController',
+                        templateUrl:'Page1.html'
+                    })
+                .when('Page2.html',
+                    {
+                        controller:'MoviesController',
+                        templateUrl:'Page2.html'
+                    })
+                .otherwise({redirectTo: 'Page1.html'});
+
+        });
+
+      
+
+ 
+        
+        </script>
+
+
+    </body>
+</html>
